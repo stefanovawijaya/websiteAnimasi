@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <style>
+        body{
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            overflow:hidden;
+        }
+
+        .image-container{
+            position:relative;
+    
+        }
+
+        #futureImage{
+            width:400px;
+            border-radius: 200px;
+            opacity:0;
+            transform:translateY(60px) scale(0.8);
+            filter:blur(15px);
+            transition:
+                opacity 1.2s ease,
+                transform 1.2s cubic-bezier(.2,.8,.2,1),
+                filter 1.2s ease;
+        }
+
+/* Ketika animasi aktif */
+        #futureImage.show{
+            opacity:1;
+            transform:translateY(0) scale(1);
+            filter:blur(0);
+            box-shadow:
+                0 0 20px #5bc1fc,
+                0 0 40px #35bcfb,
+                0 0 80px #38b6ff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="image-container" onclick="movePage()">
+        <img src="gambar AI.png" alt="Image" id="futureImage">
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const image = document.getElementById("futureImage");
+
+            setTimeout(() => {
+                image.classList.add("show");
+            }, 500);
+        });
+        function movePage(){
+            try {
+                // Navigate to another page (relative or absolute URL)
+                window.location.href = "index.html"; 
+            } catch (error) {
+                console.error("Navigation failed:", error);
+                alert("Unable to navigate to the page.");
+            }
+        }
+    </script>
+</body>
+</html>
